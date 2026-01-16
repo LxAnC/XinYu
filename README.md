@@ -5,26 +5,17 @@
 [![License](https://img.shields.io/badge/License-MIT-yellow?style=flat-square)](LICENSE)
 
 **心语 (Xinyu)** 是一款专为心理健康设计的社区应用，旨在提供一个温暖、私密且专业的倾诉空间。通过 AI 陪伴、专业咨询和社区互助，帮助用户缓解焦虑、管理情绪并实现自我成长。
-<img width="436" height="837" alt="example_1" src="https://github.com/user-attachments/assets/90ead688-87c7-4fbc-b02f-0312fa193271" />
-<img width="434" height="839" alt="example_2" src="https://github.com/user-attachments/assets/bb9719a7-17bd-49ee-abf2-198141ada90b" />
-<img width="436" height="835" alt="example_3" src="https://github.com/user-attachments/assets/fb1ea43d-8f60-4999-b93c-99792d1405d6" />
-<img width="435" height="838" alt="example_4" src="https://github.com/user-attachments/assets/f7eede11-158f-42a6-8df4-936048208a5d" />
-<img width="434" height="837" alt="example_5" src="https://github.com/user-attachments/assets/410c80e2-d3bc-4fd6-a01f-efac2f2305d4" />
-<img width="435" height="837" alt="example_6" src="https://github.com/user-attachments/assets/ffde74e6-2f2a-422a-be78-ffdcb6b1c249" />
-<img width="434" height="839" alt="example_7" src="https://github.com/user-attachments/assets/048c4fee-e5a8-456b-9d35-2395995ec81d" />
 
 
+## 🚀效果展示
 
 
-
-![image-20260116160212200](C:\Users\小陆\AppData\Roaming\Typora\typora-user-images\image-20260116160212200.png)![image-20260116160232991](C:\Users\小陆\AppData\Roaming\Typora\typora-user-images\image-20260116160250643.png)
-
-![image-20260116160324418](C:\Users\小陆\AppData\Roaming\Typora\typora-user-images\image-20260116160324418.png)![image-20260116160339604](C:\Users\小陆\AppData\Roaming\Typora\typora-user-images\image-20260116160339604.png)
-
-
-
-![image-20260116160417160](C:\Users\小陆\AppData\Roaming\Typora\typora-user-images\image-20260116160417160.png)![image-20260116160434210](C:\Users\小陆\AppData\Roaming\Typora\typora-user-images\image-20260116160434210.png)
-
+<img width="420" height="833" alt="image" src="https://github.com/user-attachments/assets/f6498887-e0da-4c04-91e8-bc9acf9593b8" />
+<img width="431" height="831" alt="image" src="https://github.com/user-attachments/assets/759c4f52-0544-4057-bb01-36e7c3310c0b" />
+<img width="430" height="834" alt="image" src="https://github.com/user-attachments/assets/5608c8bc-cd87-4a92-bb40-857f1e6a02aa" />
+<img width="432" height="833" alt="image" src="https://github.com/user-attachments/assets/876d1e35-349d-48fd-8e52-20a1e9f98a2e" />
+<img width="432" height="833" alt="image" src="https://github.com/user-attachments/assets/488274e6-61da-4441-8cfd-52265d4be9a2" />
+<img width="430" height="836" alt="image" src="https://github.com/user-attachments/assets/808c932b-d888-4d78-bbac-b6e95a5e52c2" />
 
 
 ## 🌟 核心功能
