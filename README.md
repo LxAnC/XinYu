@@ -5,6 +5,13 @@
 [![License](https://img.shields.io/badge/License-MIT-yellow?style=flat-square)](LICENSE)
 
 **心语 (Xinyu)** 是一款专为心理健康设计的社区应用，旨在提供一个温暖、私密且专业的倾诉空间。通过 AI 陪伴、专业咨询和社区互助，帮助用户缓解焦虑、管理情绪并实现自我成长。
+<img width="436" height="837" alt="example_1" src="https://github.com/user-attachments/assets/90ead688-87c7-4fbc-b02f-0312fa193271" />
+<img width="434" height="839" alt="example_2" src="https://github.com/user-attachments/assets/bb9719a7-17bd-49ee-abf2-198141ada90b" />
+<img width="436" height="835" alt="example_3" src="https://github.com/user-attachments/assets/fb1ea43d-8f60-4999-b93c-99792d1405d6" />
+<img width="435" height="838" alt="example_4" src="https://github.com/user-attachments/assets/f7eede11-158f-42a6-8df4-936048208a5d" />
+<img width="434" height="837" alt="example_5" src="https://github.com/user-attachments/assets/410c80e2-d3bc-4fd6-a01f-efac2f2305d4" />
+<img width="435" height="837" alt="example_6" src="https://github.com/user-attachments/assets/ffde74e6-2f2a-422a-be78-ffdcb6b1c249" />
+<img width="434" height="839" alt="example_7" src="https://github.com/user-attachments/assets/048c4fee-e5a8-456b-9d35-2395995ec81d" />
 
 ## 🌟 核心功能
 
