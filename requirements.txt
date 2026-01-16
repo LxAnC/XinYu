@@ -1,0 +1,29 @@
+# 心语 (Xinyu) Backend Requirements
+
+# Core Framework
+fastapi==0.109.0
+uvicorn==0.27.0
+python-multipart==0.0.6
+
+# Database
+sqlalchemy==2.0.25
+pymysql==1.1.0
+alembic==1.13.1
+
+# Authentication
+python-jose[cryptography]==3.3.0
+passlib[bcrypt]==1.7.4
+
+# Validation & Settings
+pydantic==2.5.3
+pydantic-settings==2.1.0
+python-dotenv==1.0.0
+
+# Cache & Message Queue
+redis==5.0.1
+
+# HTTP Client (for third-party APIs)
+httpx==0.26.0
+
+# WebSocket
+websockets==12.0

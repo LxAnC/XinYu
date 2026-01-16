@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>咨询师详情 - 心语</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        coral: '#FF6B81',
+                        'coral-light': '#FF8A9B',
+                        blush: '#FFF0F3',
+                        'blush-deep': '#FFE4E9',
+                        purple: '#6C5CE7',
+                        'purple-light': '#A29BFE',
+                        mint: '#00D9A5',
+                    },
+                    fontFamily: { sans: ['Nunito Sans', 'sans-serif'] },
+                }
+            }
+        }
+    </script>
+    <style>
+        body { font-family: 'Nunito Sans', sans-serif; background: #FFF0F3; }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+    </style>
+</head>
+<body class="pb-24">
+    <!-- 顶部导航 -->
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-lg border-b border-blush-deep">
+        <div class="flex items-center justify-between px-4 py-3">
+            <a href="index.html" class="p-2 -ml-2 hover:bg-blush rounded-full">
+                <svg class="w-6 h-6 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+                </svg>
+            </a>
+            <h1 class="font-bold text-gray-800">咨询师详情</h1>
+            <button class="p-2 -mr-2 hover:bg-blush rounded-full">
+                <svg class="w-6 h-6 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z"/>
+                </svg>
+            </button>
+        </div>
+    </nav>
+
+    <main class="pt-16">
+        <!-- 咨询师信息头部 -->
+        <div class="bg-white px-4 py-6">
+            <div class="flex gap-4">
+                <div class="w-24 h-24 rounded-2xl bg-gradient-to-br from-coral to-coral-light flex items-center justify-center flex-shrink-0">
+                    <svg class="w-12 h-12 text-white" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+                    </svg>
+                </div>
+                <div class="flex-1">
+                    <div class="flex items-center gap-2 mb-1">
+                        <h1 class="text-xl font-bold text-gray-800">李心怡</h1>
+                        <span class="text-xs text-mint bg-mint/10 px-2 py-0.5 rounded-full">已认证</span>
+                    </div>
+                    <p class="text-sm text-gray-600 mb-2">国家二级心理咨询师</p>
+                    <div class="flex items-center gap-4 text-sm">
+                        <div class="flex items-center gap-1">
+                            <svg class="w-4 h-4 text-amber-400" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
+                            </svg>
+                            <span class="font-semibold text-gray-800">4.9</span>
+                            <span class="text-gray-400">(328)</span>
+                        </div>
+                        <span class="text-gray-400">|</span>
+                        <span class="text-gray-600">从业8年</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 专业标签 -->
+            <div class="flex flex-wrap gap-2 mt-4">
+                <span class="px-3 py-1 bg-coral/10 text-coral text-sm rounded-full">情绪管理</span>
+                <span class="px-3 py-1 bg-purple/10 text-purple text-sm rounded-full">焦虑抑郁</span>
+                <span class="px-3 py-1 bg-mint/10 text-mint text-sm rounded-full">人际关系</span>
+                <span class="px-3 py-1 bg-amber-100 text-amber-600 text-sm rounded-full">职场压力</span>
+            </div>
+        </div>
+
+        <!-- 快捷信息 -->
+        <div class="bg-white mt-2 px-4 py-4">
+            <div class="grid grid-cols-3 text-center">
+                <div class="border-r border-blush">
+                    <div class="text-lg font-bold text-coral">199</div>
+                    <div class="text-xs text-gray-500">元/次</div>
+                </div>
+                <div class="border-r border-blush">
+                    <div class="text-lg font-bold text-gray-800">50分钟</div>
+                    <div class="text-xs text-gray-500">咨询时长</div>
+                </div>
+                <div>
+                    <div class="text-lg font-bold text-mint">在线</div>
+                    <div class="text-xs text-gray-500">当前状态</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 个人介绍 -->
+        <div class="bg-white mt-2 px-4 py-4">
+            <h2 class="font-bold text-gray-800 mb-3">个人介绍</h2>
+            <p class="text-sm text-gray-600 leading-relaxed">
+                你好，我是心怡老师。从事心理咨询工作8年，累计咨询时长超过3000小时。
+            </p>
+            <p class="text-sm text-gray-600 leading-relaxed mt-2">
+                我擅长情绪管理、焦虑抑郁、人际关系等方面的咨询。在我看来，每个人都值得被温柔以待，每一次倾诉都是治愈的开始。
+            </p>
+            <p class="text-sm text-gray-600 leading-relaxed mt-2">
+                我会用专业的态度和温暖的陪伴，帮助你找到内心的力量，一起走过人生的困难时刻。
+            </p>
+        </div>
+
+        <!-- 专业资质 -->
+        <div class="bg-white mt-2 px-4 py-4">
+            <h2 class="font-bold text-gray-800 mb-3">专业资质</h2>
+            <div class="space-y-3">
+                <div class="flex items-start gap-3">
+                    <div class="w-8 h-8 rounded-lg bg-coral/10 flex items-center justify-center flex-shrink-0 mt-0.5">
+                        <svg class="w-4 h-4 text-coral" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <h3 class="font-medium text-gray-800">国家二级心理咨询师</h3>
+                        <p class="text-xs text-gray-500">证书编号: 2016XXXXXX</p>
+                    </div>
+                </div>
+                <div class="flex items-start gap-3">
+                    <div class="w-8 h-8 rounded-lg bg-purple/10 flex items-center justify-center flex-shrink-0 mt-0.5">
+                        <svg class="w-4 h-4 text-purple" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <h3 class="font-medium text-gray-800">北京大学心理学硕士</h3>
+                        <p class="text-xs text-gray-500">2012年毕业</p>
+                    </div>
+                </div>
+                <div class="flex items-start gap-3">
+                    <div class="w-8 h-8 rounded-lg bg-mint/10 flex items-center justify-center flex-shrink-0 mt-0.5">
+                        <svg class="w-4 h-4 text-mint" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <h3 class="font-medium text-gray-800">认知行为疗法(CBT)认证</h3>
+                        <p class="text-xs text-gray-500">中国心理学会认证</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 用户评价 -->
+        <div class="bg-white mt-2 px-4 py-4">
+            <div class="flex items-center justify-between mb-3">
+                <h2 class="font-bold text-gray-800">用户评价</h2>
+                <a href="#" class="text-sm text-coral">查看全部 (328)</a>
+            </div>
+            <div class="space-y-4">
+                <!-- 评价1 -->
+                <div class="pb-4 border-b border-blush">
+                    <div class="flex items-center gap-2 mb-2">
+                        <div class="w-8 h-8 rounded-full bg-gradient-to-br from-purple to-purple-light flex items-center justify-center">
+                            <span class="text-white text-xs font-bold">小</span>
+                        </div>
+                        <span class="text-sm font-medium text-gray-800">小阳光</span>
+                        <div class="flex gap-0.5 ml-auto">
+                            <svg class="w-4 h-4 text-amber-400" fill="currentColor" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                            <svg class="w-4 h-4 text-amber-400" fill="currentColor" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                            <svg class="w-4 h-4 text-amber-400" fill="currentColor" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                            <svg class="w-4 h-4 text-amber-400" fill="currentColor" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                            <svg class="w-4 h-4 text-amber-400" fill="currentColor" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                        </div>
+                    </div>
+                    <p class="text-sm text-gray-600">老师很温柔很有耐心，让我感到很放松。这是我第一次做心理咨询，老师帮我分析了很多，感觉清晰了很多。</p>
+                    <p class="text-xs text-gray-400 mt-2">2026-01-10 咨询后评价</p>
+                </div>
+
+                <!-- 评价2 -->
+                <div>
+                    <div class="flex items-center gap-2 mb-2">
+                        <div class="w-8 h-8 rounded-full bg-gradient-to-br from-mint to-emerald-400 flex items-center justify-center">
+                            <span class="text-white text-xs font-bold">温</span>
+                        </div>
+                        <span class="text-sm font-medium text-gray-800">温暖如初</span>
+                        <div class="flex gap-0.5 ml-auto">
+                            <svg class="w-4 h-4 text-amber-400" fill="currentColor" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                            <svg class="w-4 h-4 text-amber-400" fill="currentColor" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                            <svg class="w-4 h-4 text-amber-400" fill="currentColor" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                            <svg class="w-4 h-4 text-amber-400" fill="currentColor" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                            <svg class="w-4 h-4 text-amber-400" fill="currentColor" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                        </div>
+                    </div>
+                    <p class="text-sm text-gray-600">已经和老师咨询了3次了，每次都收获很多。老师的专业建议帮助我学会了如何管理自己的情绪，非常感谢！</p>
+                    <p class="text-xs text-gray-400 mt-2">2026-01-05 咨询后评价</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- 底部操作栏 -->
+    <div class="fixed bottom-0 left-0 right-0 bg-white border-t border-blush-deep px-4 py-3 pb-[env(safe-area-inset-bottom)]">
+        <div class="flex items-center gap-3">
+            <button class="w-12 h-12 rounded-full border-2 border-coral text-coral flex items-center justify-center hover:bg-coral/5 transition">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/>
+                </svg>
+            </button>
+            <button onclick="bookAppointment()" class="flex-1 py-3 bg-gradient-to-r from-coral to-coral-light text-white font-semibold rounded-full shadow-lg hover:shadow-xl transition">
+                立即预约 - 199元/次
+            </button>
+        </div>
+    </div>
+
+    <script>
+        function bookAppointment() {
+            alert('预约功能开发中...\n请先登录后再预约咨询师');
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>心理测评 - 心语</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        coral: '#FF6B81',
+                        'coral-light': '#FF8A9B',
+                        blush: '#FFF0F3',
+                        'blush-deep': '#FFE4E9',
+                        purple: '#6C5CE7',
+                        'purple-light': '#A29BFE',
+                        mint: '#00D9A5',
+                    },
+                    fontFamily: { sans: ['Nunito Sans', 'sans-serif'] },
+                }
+            }
+        }
+    </script>
+    <style>
+        body { font-family: 'Nunito Sans', sans-serif; background: #FFF0F3; }
+        .card-hover { transition: all 0.2s; cursor: pointer; }
+        .card-hover:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(255,107,129,0.15); }
+    </style>
+</head>
+<body class="pb-6">
+    <!-- 顶部导航 -->
+    <nav class="sticky top-0 z-50 bg-white/90 backdrop-blur-lg border-b border-blush-deep">
+        <div class="flex items-center justify-between px-4 py-3">
+            <a href="profile.html" class="p-2 -ml-2 hover:bg-blush rounded-full">
+                <svg class="w-6 h-6 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+                </svg>
+            </a>
+            <h1 class="font-bold text-gray-800">心理测评</h1>
+            <div class="w-10"></div>
+        </div>
+    </nav>
+
+    <!-- Banner -->
+    <div class="mx-4 mt-4 rounded-2xl bg-gradient-to-br from-mint to-emerald-400 p-5 text-white relative overflow-hidden">
+        <div class="absolute top-0 right-0 w-24 h-24 bg-white/10 rounded-full -translate-y-1/2 translate-x-1/2"></div>
+        <div class="relative z-10">
+            <h2 class="text-lg font-bold mb-1">了解自己，是成长的第一步</h2>
+            <p class="text-sm text-white/80">专业心理测评，帮助你更好地认识自己</p>
+        </div>
+    </div>
+
+    <!-- 测评列表 -->
+    <main class="px-4 mt-6 space-y-4">
+        <!-- 焦虑自评 -->
+        <div class="bg-white rounded-2xl shadow-sm overflow-hidden card-hover" onclick="startAssessment('anxiety')">
+            <div class="p-4">
+                <div class="flex items-start gap-4">
+                    <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-amber-100 to-orange-100 flex items-center justify-center flex-shrink-0">
+                        <svg class="w-7 h-7 text-amber-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/>
+                        </svg>
+                    </div>
+                    <div class="flex-1">
+                        <div class="flex items-center gap-2 mb-1">
+                            <h3 class="font-bold text-gray-800">焦虑自评量表(SAS)</h3>
+                            <span class="text-xs text-mint bg-mint/10 px-2 py-0.5 rounded-full">免费</span>
+                        </div>
+                        <p class="text-sm text-gray-500 mb-2">评估你的焦虑程度，了解自己的情绪状态</p>
+                        <div class="flex items-center gap-4 text-xs text-gray-400">
+                            <span>20道题</span>
+                            <span>约5分钟</span>
+                            <span>12.3万人已测</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="px-4 py-3 bg-blush/50 flex items-center justify-between">
+                <span class="text-xs text-gray-500">专业心理量表</span>
+                <span class="text-sm text-coral font-medium">开始测评</span>
+            </div>
+        </div>
+
+        <!-- 抑郁自评 -->
+        <div class="bg-white rounded-2xl shadow-sm overflow-hidden card-hover" onclick="startAssessment('depression')">
+            <div class="p-4">
+                <div class="flex items-start gap-4">
+                    <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-blue-100 to-indigo-100 flex items-center justify-center flex-shrink-0">
+                        <svg class="w-7 h-7 text-indigo-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/>
+                        </svg>
+                    </div>
+                    <div class="flex-1">
+                        <div class="flex items-center gap-2 mb-1">
+                            <h3 class="font-bold text-gray-800">抑郁自评量表(SDS)</h3>
+                            <span class="text-xs text-mint bg-mint/10 px-2 py-0.5 rounded-full">免费</span>
+                        </div>
+                        <p class="text-sm text-gray-500 mb-2">了解你的情绪低落程度，及时关注心理健康</p>
+                        <div class="flex items-center gap-4 text-xs text-gray-400">
+                            <span>20道题</span>
+                            <span>约5分钟</span>
+                            <span>9.8万人已测</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="px-4 py-3 bg-blush/50 flex items-center justify-between">
+                <span class="text-xs text-gray-500">专业心理量表</span>
+                <span class="text-sm text-coral font-medium">开始测评</span>
+            </div>
+        </div>
+
+        <!-- 压力测评 -->
+        <div class="bg-white rounded-2xl shadow-sm overflow-hidden card-hover" onclick="startAssessment('stress')">
+            <div class="p-4">
+                <div class="flex items-start gap-4">
+                    <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-rose-100 to-pink-100 flex items-center justify-center flex-shrink-0">
+                        <svg class="w-7 h-7 text-rose-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+                        </svg>
+                    </div>
+                    <div class="flex-1">
+                        <div class="flex items-center gap-2 mb-1">
+                            <h3 class="font-bold text-gray-800">压力感知量表(PSS)</h3>
+                            <span class="text-xs text-mint bg-mint/10 px-2 py-0.5 rounded-full">免费</span>
+                        </div>
+                        <p class="text-sm text-gray-500 mb-2">测量你的压力水平，找到适合的减压方法</p>
+                        <div class="flex items-center gap-4 text-xs text-gray-400">
+                            <span>10道题</span>
+                            <span>约3分钟</span>
+                            <span>15.6万人已测</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="px-4 py-3 bg-blush/50 flex items-center justify-between">
+                <span class="text-xs text-gray-500">专业心理量表</span>
+                <span class="text-sm text-coral font-medium">开始测评</span>
+            </div>
+        </div>
+
+        <!-- 睡眠质量 -->
+        <div class="bg-white rounded-2xl shadow-sm overflow-hidden card-hover" onclick="startAssessment('sleep')">
+            <div class="p-4">
+                <div class="flex items-start gap-4">
+                    <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-purple-100 to-violet-100 flex items-center justify-center flex-shrink-0">
+                        <svg class="w-7 h-7 text-purple" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/>
+                        </svg>
+                    </div>
+                    <div class="flex-1">
+                        <div class="flex items-center gap-2 mb-1">
+                            <h3 class="font-bold text-gray-800">睡眠质量指数(PSQI)</h3>
+                            <span class="text-xs text-mint bg-mint/10 px-2 py-0.5 rounded-full">免费</span>
+                        </div>
+                        <p class="text-sm text-gray-500 mb-2">评估你的睡眠质量，获取改善建议</p>
+                        <div class="flex items-center gap-4 text-xs text-gray-400">
+                            <span>19道题</span>
+                            <span>约5分钟</span>
+                            <span>8.2万人已测</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="px-4 py-3 bg-blush/50 flex items-center justify-between">
+                <span class="text-xs text-gray-500">专业心理量表</span>
+                <span class="text-sm text-coral font-medium">开始测评</span>
+            </div>
+        </div>
+
+        <!-- 人格测试 -->
+        <div class="bg-white rounded-2xl shadow-sm overflow-hidden card-hover" onclick="startAssessment('mbti')">
+            <div class="p-4">
+                <div class="flex items-start gap-4">
+                    <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-coral/20 to-coral-light/20 flex items-center justify-center flex-shrink-0">
+                        <svg class="w-7 h-7 text-coral" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/>
+                        </svg>
+                    </div>
+                    <div class="flex-1">
+                        <div class="flex items-center gap-2 mb-1">
+                            <h3 class="font-bold text-gray-800">MBTI人格测试</h3>
+                            <span class="text-xs text-coral bg-coral/10 px-2 py-0.5 rounded-full">热门</span>
+                        </div>
+                        <p class="text-sm text-gray-500 mb-2">探索你的人格类型，发现独特的自己</p>
+                        <div class="flex items-center gap-4 text-xs text-gray-400">
+                            <span>93道题</span>
+                            <span>约15分钟</span>
+                            <span>25.1万人已测</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="px-4 py-3 bg-blush/50 flex items-center justify-between">
+                <span class="text-xs text-gray-500">性格探索</span>
+                <span class="text-sm text-coral font-medium">开始测评</span>
+            </div>
+        </div>
+    </main>
+
+    <!-- 提示 -->
+    <div class="mx-4 mt-6 p-4 bg-white/50 rounded-xl">
+        <p class="text-xs text-gray-500 text-center">
+            测评结果仅供参考，不能作为诊断依据。如有需要，请咨询专业心理咨询师。
+        </p>
+    </div>
+
+    <script>
+        function startAssessment(type) {
+            alert('即将开始' + type + '测评...\n(测评功能开发中)');
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,1019 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>心语 - 你的心理健康伙伴</title>
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <!-- Tailwind 配置 -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        coral: '#FF6B81',
+                        'coral-light': '#FF8A9B',
+                        'coral-dark': '#E55A6F',
+                        blush: '#FFF0F3',
+                        'blush-deep': '#FFE4E9',
+                        purple: '#6C5CE7',
+                        'purple-light': '#A29BFE',
+                        mint: '#00D9A5',
+                        'mint-light': '#E8FBF5',
+                    },
+                    fontFamily: {
+                        sans: ['Nunito Sans', 'system-ui', 'sans-serif'],
+                    },
+                    borderRadius: {
+                        '2xl': '1rem',
+                        '3xl': '1.5rem',
+                    },
+                    boxShadow: {
+                        'soft': '0 4px 20px rgba(255, 107, 129, 0.15)',
+                        'card': '0 8px 30px rgba(0, 0, 0, 0.08)',
+                        'float': '0 10px 40px rgba(255, 107, 129, 0.2)',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* 全局样式 */
+        body {
+            font-family: 'Nunito Sans', sans-serif;
+            background-color: #FFF0F3;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* 渐变背景 */
+        .gradient-coral {
+            background: linear-gradient(135deg, #FF6B81 0%, #FF8A9B 100%);
+        }
+
+        .gradient-purple {
+            background: linear-gradient(135deg, #6C5CE7 0%, #A29BFE 100%);
+        }
+
+        /* 卡片悬浮效果 */
+        .card-hover {
+            transition: all 0.25s ease-out;
+            cursor: pointer;
+        }
+        .card-hover:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px rgba(255, 107, 129, 0.2);
+        }
+
+        /* 尊重用户动画偏好 */
+        @media (prefers-reduced-motion: reduce) {
+            .card-hover {
+                transition: none;
+            }
+            .card-hover:hover {
+                transform: none;
+            }
+        }
+
+        /* 瀑布流布局 */
+        .masonry {
+            column-count: 2;
+            column-gap: 12px;
+        }
+        .masonry-item {
+            break-inside: avoid;
+            margin-bottom: 12px;
+        }
+
+        /* 底部导航安全区 */
+        .bottom-safe {
+            padding-bottom: calc(60px + env(safe-area-inset-bottom));
+        }
+
+        /* 隐藏滚动条 */
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        /* 焦点状态 - 键盘导航可访问性 */
+        .focus-ring:focus {
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(255, 107, 129, 0.4);
+        }
+        .focus-ring:focus-visible {
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(255, 107, 129, 0.4);
+        }
+
+        /* 按钮过渡 */
+        button, a {
+            transition: all 0.2s ease-out;
+        }
+    </style>
+</head>
+<body class="bottom-safe">
+
+    <!-- 顶部导航栏 -->
+    <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-lg border-b border-blush-deep">
+        <div class="flex items-center justify-between px-4 py-3">
+            <!-- Logo -->
+            <div class="flex items-center gap-2">
+                <div class="w-8 h-8 rounded-full gradient-coral flex items-center justify-center">
+                    <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                    </svg>
+                </div>
+                <span class="text-lg font-bold text-coral">心语</span>
+            </div>
+
+            <!-- 搜索栏 -->
+            <div class="flex-1 mx-4 max-w-xs">
+                <div class="relative">
+                    <input type="text" placeholder="搜索心理话题..." aria-label="搜索心理话题"
+                        class="w-full py-2 px-4 pl-10 bg-blush rounded-full text-sm focus:outline-none focus:ring-2 focus:ring-coral/30">
+                    <svg class="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-coral-light" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+                    </svg>
+                </div>
+            </div>
+
+            <!-- 用户头像 -->
+            <div class="w-9 h-9 rounded-full bg-gradient-to-br from-purple to-purple-light flex items-center justify-center">
+                <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+                </svg>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Banner主视觉区 -->
+    <section id="banner" class="pt-16 px-4">
+        <div class="mt-4 rounded-3xl gradient-coral p-6 text-white relative overflow-hidden">
+            <!-- 装饰圆点 -->
+            <div class="absolute top-4 right-4 w-20 h-20 bg-white/10 rounded-full"></div>
+            <div class="absolute bottom-0 right-12 w-32 h-32 bg-white/5 rounded-full translate-y-1/2"></div>
+
+            <!-- 内容 -->
+            <div class="relative z-10">
+                <h1 class="text-2xl font-bold mb-2">每一次倾诉</h1>
+                <h2 class="text-2xl font-bold mb-3">都是治愈的开始</h2>
+                <p class="text-white/80 text-sm mb-4">专业心理咨询 | AI陪伴 | 温暖社区</p>
+
+                <!-- 统计数据 -->
+                <div class="flex gap-6 mb-4">
+                    <div>
+                        <div class="text-xl font-bold">10万+</div>
+                        <div class="text-xs text-white/70">用户信赖</div>
+                    </div>
+                    <div>
+                        <div class="text-xl font-bold">500+</div>
+                        <div class="text-xs text-white/70">专业咨询师</div>
+                    </div>
+                    <div>
+                        <div class="text-xl font-bold">24h</div>
+                        <div class="text-xs text-white/70">在线服务</div>
+                    </div>
+                </div>
+
+                <!-- CTA按钮 -->
+                <button class="bg-white text-coral font-semibold py-2.5 px-6 rounded-full shadow-soft card-hover focus-ring" aria-label="开始探索心语">
+                    开始探索
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- 功能入口卡片区 -->
+    <section id="features" class="px-4 py-6">
+        <div class="grid grid-cols-4 gap-3">
+            <!-- AI倾诉 -->
+            <a href="ai-chat.html" class="flex flex-col items-center focus-ring rounded-2xl" aria-label="AI倾诉">
+                <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-purple to-purple-light flex items-center justify-center shadow-soft card-hover">
+                    <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/>
+                    </svg>
+                </div>
+                <span class="mt-2 text-xs text-gray-600">AI倾诉</span>
+            </a>
+
+            <!-- 找咨询师 -->
+            <a href="counselor-detail.html" class="flex flex-col items-center focus-ring rounded-2xl" aria-label="找咨询师">
+                <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-coral to-coral-light flex items-center justify-center shadow-soft card-hover">
+                    <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/>
+                    </svg>
+                </div>
+                <span class="mt-2 text-xs text-gray-600">找咨询师</span>
+            </a>
+
+            <!-- 心理测评 -->
+            <a href="assessment.html" class="flex flex-col items-center focus-ring rounded-2xl" aria-label="心理测评">
+                <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-mint to-emerald-400 flex items-center justify-center shadow-soft card-hover">
+                    <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"/>
+                    </svg>
+                </div>
+                <span class="mt-2 text-xs text-gray-600">心理测评</span>
+            </a>
+
+            <!-- 冥想放松 -->
+            <a href="meditation.html" class="flex flex-col items-center focus-ring rounded-2xl" aria-label="冥想放松">
+                <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-amber-400 to-orange-400 flex items-center justify-center shadow-soft card-hover">
+                    <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/>
+                    </svg>
+                </div>
+                <span class="mt-2 text-xs text-gray-600">冥想放松</span>
+            </a>
+        </div>
+    </section>
+
+    <!-- 内容瀑布流区 -->
+    <section id="feed" class="px-4 py-4">
+        <!-- 标签栏 -->
+        <div class="flex gap-2 mb-4 overflow-x-auto hide-scrollbar pb-2">
+            <button class="px-4 py-1.5 rounded-full bg-coral text-white text-sm font-medium whitespace-nowrap">推荐</button>
+            <button class="px-4 py-1.5 rounded-full bg-white text-gray-600 text-sm whitespace-nowrap card-hover">焦虑</button>
+            <button class="px-4 py-1.5 rounded-full bg-white text-gray-600 text-sm whitespace-nowrap card-hover">情绪</button>
+            <button class="px-4 py-1.5 rounded-full bg-white text-gray-600 text-sm whitespace-nowrap card-hover">亲密关系</button>
+            <button class="px-4 py-1.5 rounded-full bg-white text-gray-600 text-sm whitespace-nowrap card-hover">职场</button>
+            <button class="px-4 py-1.5 rounded-full bg-white text-gray-600 text-sm whitespace-nowrap card-hover">成长</button>
+        </div>
+
+        <!-- 瀑布流内容 -->
+        <div class="masonry">
+            <!-- 卡片1 - 长图 -->
+            <div class="masonry-item">
+                <div class="bg-white rounded-2xl overflow-hidden shadow-card card-hover cursor-pointer">
+                    <div class="h-48 bg-gradient-to-br from-purple-100 to-pink-100 flex items-center justify-center">
+                        <span class="text-4xl">🌸</span>
+                    </div>
+                    <div class="p-3">
+                        <h3 class="font-semibold text-gray-800 text-sm mb-1 line-clamp-2">学会和焦虑共处：5个实用的自我安抚技巧</h3>
+                        <div class="flex items-center justify-between mt-2">
+                            <div class="flex items-center gap-1.5">
+                                <div class="w-5 h-5 rounded-full bg-coral"></div>
+                                <span class="text-xs text-gray-500">心理小助手</span>
+                            </div>
+                            <div class="flex items-center gap-1 text-gray-400">
+                                <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                                </svg>
+                                <span class="text-xs">2.3k</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 卡片2 - 短图 -->
+            <div class="masonry-item">
+                <div class="bg-white rounded-2xl overflow-hidden shadow-card card-hover cursor-pointer">
+                    <div class="h-32 bg-gradient-to-br from-mint-light to-emerald-100 flex items-center justify-center">
+                        <span class="text-4xl">🧘</span>
+                    </div>
+                    <div class="p-3">
+                        <h3 class="font-semibold text-gray-800 text-sm mb-1 line-clamp-2">5分钟正念冥想</h3>
+                        <div class="flex items-center justify-between mt-2">
+                            <div class="flex items-center gap-1.5">
+                                <div class="w-5 h-5 rounded-full bg-mint"></div>
+                                <span class="text-xs text-gray-500">冥想指南</span>
+                            </div>
+                            <div class="flex items-center gap-1 text-gray-400">
+                                <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                                </svg>
+                                <span class="text-xs">1.8k</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 卡片3 -->
+            <div class="masonry-item">
+                <div class="bg-white rounded-2xl overflow-hidden shadow-card card-hover cursor-pointer">
+                    <div class="h-40 bg-gradient-to-br from-amber-50 to-orange-100 flex items-center justify-center">
+                        <span class="text-4xl">💪</span>
+                    </div>
+                    <div class="p-3">
+                        <h3 class="font-semibold text-gray-800 text-sm mb-1 line-clamp-2">职场焦虑？这样调整心态更从容</h3>
+                        <div class="flex items-center justify-between mt-2">
+                            <div class="flex items-center gap-1.5">
+                                <div class="w-5 h-5 rounded-full bg-amber-400"></div>
+                                <span class="text-xs text-gray-500">职场心理</span>
+                            </div>
+                            <div class="flex items-center gap-1 text-gray-400">
+                                <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                                </svg>
+                                <span class="text-xs">956</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 卡片4 -->
+            <div class="masonry-item">
+                <div class="bg-white rounded-2xl overflow-hidden shadow-card card-hover cursor-pointer">
+                    <div class="h-36 bg-gradient-to-br from-blue-50 to-indigo-100 flex items-center justify-center">
+                        <span class="text-4xl">💕</span>
+                    </div>
+                    <div class="p-3">
+                        <h3 class="font-semibold text-gray-800 text-sm mb-1 line-clamp-2">亲密关系中如何表达需求</h3>
+                        <div class="flex items-center justify-between mt-2">
+                            <div class="flex items-center gap-1.5">
+                                <div class="w-5 h-5 rounded-full bg-indigo-400"></div>
+                                <span class="text-xs text-gray-500">关系疗愈</span>
+                            </div>
+                            <div class="flex items-center gap-1 text-gray-400">
+                                <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                                </svg>
+                                <span class="text-xs">3.1k</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 卡片5 -->
+            <div class="masonry-item">
+                <div class="bg-white rounded-2xl overflow-hidden shadow-card card-hover cursor-pointer">
+                    <div class="h-44 bg-gradient-to-br from-rose-50 to-pink-100 flex items-center justify-center">
+                        <span class="text-4xl">🌈</span>
+                    </div>
+                    <div class="p-3">
+                        <h3 class="font-semibold text-gray-800 text-sm mb-1 line-clamp-2">今天也要好好爱自己：给内心的一封信</h3>
+                        <div class="flex items-center justify-between mt-2">
+                            <div class="flex items-center gap-1.5">
+                                <div class="w-5 h-5 rounded-full bg-rose-400"></div>
+                                <span class="text-xs text-gray-500">自我关怀</span>
+                            </div>
+                            <div class="flex items-center gap-1 text-gray-400">
+                                <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                                </svg>
+                                <span class="text-xs">4.2k</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 卡片6 -->
+            <div class="masonry-item">
+                <div class="bg-white rounded-2xl overflow-hidden shadow-card card-hover cursor-pointer">
+                    <div class="h-32 bg-gradient-to-br from-violet-50 to-purple-100 flex items-center justify-center">
+                        <span class="text-4xl">😴</span>
+                    </div>
+                    <div class="p-3">
+                        <h3 class="font-semibold text-gray-800 text-sm mb-1 line-clamp-2">改善睡眠的7个小习惯</h3>
+                        <div class="flex items-center justify-between mt-2">
+                            <div class="flex items-center gap-1.5">
+                                <div class="w-5 h-5 rounded-full bg-violet-400"></div>
+                                <span class="text-xs text-gray-500">睡眠健康</span>
+                            </div>
+                            <div class="flex items-center gap-1 text-gray-400">
+                                <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                                </svg>
+                                <span class="text-xs">1.5k</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 咨询师推荐区 -->
+    <section id="counselors" class="px-4 py-6">
+        <!-- 标题 -->
+        <div class="flex items-center justify-between mb-4">
+            <h2 class="text-lg font-bold text-gray-800">推荐咨询师</h2>
+            <a href="#" class="text-sm text-coral">查看更多</a>
+        </div>
+
+        <!-- 咨询师列表 - 横向滚动 -->
+        <div class="flex gap-3 overflow-x-auto hide-scrollbar pb-2">
+            <!-- 咨询师1 -->
+            <div class="flex-shrink-0 w-36 bg-white rounded-2xl p-4 shadow-card card-hover cursor-pointer">
+                <div class="w-16 h-16 mx-auto rounded-full bg-gradient-to-br from-coral to-coral-light flex items-center justify-center mb-3">
+                    <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+                    </svg>
+                </div>
+                <h3 class="text-center font-semibold text-gray-800 text-sm">李心怡</h3>
+                <p class="text-center text-xs text-gray-500 mt-1">情绪管理专家</p>
+                <div class="flex items-center justify-center gap-1 mt-2">
+                    <svg class="w-3.5 h-3.5 text-amber-400" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
+                    </svg>
+                    <span class="text-xs text-gray-600">4.9</span>
+                    <span class="text-xs text-gray-400">| 328次</span>
+                </div>
+                <div class="mt-3 text-center">
+                    <span class="text-coral font-semibold text-sm">¥199</span>
+                    <span class="text-xs text-gray-400">/次</span>
+                </div>
+            </div>
+
+            <!-- 咨询师2 -->
+            <div class="flex-shrink-0 w-36 bg-white rounded-2xl p-4 shadow-card card-hover cursor-pointer">
+                <div class="w-16 h-16 mx-auto rounded-full bg-gradient-to-br from-purple to-purple-light flex items-center justify-center mb-3">
+                    <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+                    </svg>
+                </div>
+                <h3 class="text-center font-semibold text-gray-800 text-sm">王思远</h3>
+                <p class="text-center text-xs text-gray-500 mt-1">焦虑症专家</p>
+                <div class="flex items-center justify-center gap-1 mt-2">
+                    <svg class="w-3.5 h-3.5 text-amber-400" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
+                    </svg>
+                    <span class="text-xs text-gray-600">4.8</span>
+                    <span class="text-xs text-gray-400">| 512次</span>
+                </div>
+                <div class="mt-3 text-center">
+                    <span class="text-coral font-semibold text-sm">¥299</span>
+                    <span class="text-xs text-gray-400">/次</span>
+                </div>
+            </div>
+
+            <!-- 咨询师3 -->
+            <div class="flex-shrink-0 w-36 bg-white rounded-2xl p-4 shadow-card card-hover cursor-pointer">
+                <div class="w-16 h-16 mx-auto rounded-full bg-gradient-to-br from-mint to-emerald-400 flex items-center justify-center mb-3">
+                    <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+                    </svg>
+                </div>
+                <h3 class="text-center font-semibold text-gray-800 text-sm">陈晓雨</h3>
+                <p class="text-center text-xs text-gray-500 mt-1">亲密关系</p>
+                <div class="flex items-center justify-center gap-1 mt-2">
+                    <svg class="w-3.5 h-3.5 text-amber-400" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
+                    </svg>
+                    <span class="text-xs text-gray-600">5.0</span>
+                    <span class="text-xs text-gray-400">| 203次</span>
+                </div>
+                <div class="mt-3 text-center">
+                    <span class="text-coral font-semibold text-sm">¥249</span>
+                    <span class="text-xs text-gray-400">/次</span>
+                </div>
+            </div>
+
+            <!-- 咨询师4 -->
+            <div class="flex-shrink-0 w-36 bg-white rounded-2xl p-4 shadow-card card-hover cursor-pointer">
+                <div class="w-16 h-16 mx-auto rounded-full bg-gradient-to-br from-amber-400 to-orange-400 flex items-center justify-center mb-3">
+                    <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+                    </svg>
+                </div>
+                <h3 class="text-center font-semibold text-gray-800 text-sm">张明辉</h3>
+                <p class="text-center text-xs text-gray-500 mt-1">职场心理</p>
+                <div class="flex items-center justify-center gap-1 mt-2">
+                    <svg class="w-3.5 h-3.5 text-amber-400" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
+                    </svg>
+                    <span class="text-xs text-gray-600">4.7</span>
+                    <span class="text-xs text-gray-400">| 456次</span>
+                </div>
+                <div class="mt-3 text-center">
+                    <span class="text-coral font-semibold text-sm">¥179</span>
+                    <span class="text-xs text-gray-400">/次</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- AI聊天预览区 -->
+    <section id="ai-chat" class="px-4 py-6">
+        <div class="bg-white rounded-3xl p-5 shadow-card">
+            <!-- 标题 -->
+            <div class="flex items-center gap-3 mb-4">
+                <div class="w-12 h-12 rounded-full gradient-purple flex items-center justify-center">
+                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/>
+                    </svg>
+                </div>
+                <div>
+                    <h2 class="font-bold text-gray-800">心语AI助手</h2>
+                    <p class="text-xs text-gray-500">24小时在线 | 温暖倾听</p>
+                </div>
+            </div>
+
+            <!-- 对话预览 -->
+            <div class="space-y-3 mb-4">
+                <!-- AI消息 -->
+                <div class="flex gap-2">
+                    <div class="w-8 h-8 rounded-full bg-purple-100 flex items-center justify-center flex-shrink-0">
+                        <svg class="w-4 h-4 text-purple" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                        </svg>
+                    </div>
+                    <div class="bg-blush rounded-2xl rounded-tl-sm px-4 py-3 max-w-[80%]">
+                        <p class="text-sm text-gray-700">你好呀，我是心语AI助手。今天有什么想聊的吗？无论是工作压力、情绪困扰，还是只是想找人说说话，我都在这里陪伴你。</p>
+                    </div>
+                </div>
+
+                <!-- 用户消息 -->
+                <div class="flex gap-2 justify-end">
+                    <div class="bg-coral text-white rounded-2xl rounded-tr-sm px-4 py-3 max-w-[80%]">
+                        <p class="text-sm">最近总是睡不好，感觉很焦虑...</p>
+                    </div>
+                </div>
+
+                <!-- AI回复 -->
+                <div class="flex gap-2">
+                    <div class="w-8 h-8 rounded-full bg-purple-100 flex items-center justify-center flex-shrink-0">
+                        <svg class="w-4 h-4 text-purple" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                        </svg>
+                    </div>
+                    <div class="bg-blush rounded-2xl rounded-tl-sm px-4 py-3 max-w-[80%]">
+                        <p class="text-sm text-gray-700">听起来你最近承受了不少压力。睡眠问题确实会影响我们的情绪状态。能告诉我更多关于这种焦虑的感受吗？</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 输入框 -->
+            <div class="flex gap-2">
+                <div class="flex-1 relative">
+                    <input type="text" placeholder="说说你的心事..." aria-label="输入你的心事"
+                        class="w-full py-3 px-4 bg-blush rounded-full text-sm focus:outline-none focus:ring-2 focus:ring-purple/30">
+                </div>
+                <button class="w-11 h-11 rounded-full gradient-coral flex items-center justify-center shadow-soft card-hover focus-ring" aria-label="发送消息">
+                    <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- 底部导航栏 -->
+    <nav id="bottom-nav" class="fixed bottom-0 left-0 right-0 bg-white border-t border-blush-deep z-50" role="navigation" aria-label="主导航">
+        <div class="flex items-center justify-around py-2 pb-[env(safe-area-inset-bottom)]">
+            <!-- 首页 -->
+            <a href="#" class="flex flex-col items-center py-1 px-3 focus-ring rounded-lg" aria-label="首页" aria-current="page">
+                <svg class="w-6 h-6 text-coral" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
+                </svg>
+                <span class="text-xs text-coral font-medium mt-1">首页</span>
+            </a>
+
+            <!-- 发现 -->
+            <a href="discover.html" class="flex flex-col items-center py-1 px-3 focus-ring rounded-lg" aria-label="发现">
+                <svg class="w-6 h-6 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+                </svg>
+                <span class="text-xs text-gray-400 mt-1">发现</span>
+            </a>
+
+            <!-- 发布 (中心按钮) -->
+            <a href="#" class="flex flex-col items-center -mt-5 focus-ring rounded-full" aria-label="发布内容">
+                <div class="w-14 h-14 rounded-full gradient-coral flex items-center justify-center shadow-float card-hover">
+                    <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 4v16m8-8H4"/>
+                    </svg>
+                </div>
+            </a>
+
+            <!-- 消息 -->
+            <a href="messages.html" class="flex flex-col items-center py-1 px-3 relative focus-ring rounded-lg" aria-label="消息，3条未读">
+                <svg class="w-6 h-6 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/>
+                </svg>
+                <span class="text-xs text-gray-400 mt-1">消息</span>
+                <!-- 未读数 -->
+                <div class="absolute -top-0.5 right-1 w-4 h-4 bg-coral rounded-full flex items-center justify-center">
+                    <span class="text-[10px] text-white font-medium">3</span>
+                </div>
+            </a>
+
+            <!-- 我的 -->
+            <a href="profile.html" class="flex flex-col items-center py-1 px-3 focus-ring rounded-lg" aria-label="我的">
+                <svg class="w-6 h-6 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/>
+                </svg>
+                <span class="text-xs text-gray-400 mt-1">我的</span>
+            </a>
+        </div>
+    </nav>
+
+    <!-- 登录/注册弹窗 -->
+    <div id="auth-modal" class="fixed inset-0 bg-black/50 z-[100] hidden items-center justify-center">
+        <div class="bg-white rounded-3xl p-6 mx-4 w-full max-w-sm">
+            <div class="flex justify-between items-center mb-6">
+                <h3 id="auth-title" class="text-xl font-bold text-gray-800">登录</h3>
+                <button onclick="closeAuthModal()" class="text-gray-400 hover:text-gray-600">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                    </svg>
+                </button>
+            </div>
+
+            <form id="auth-form" onsubmit="handleAuth(event)">
+                <div class="space-y-4">
+                    <div id="nickname-field" class="hidden">
+                        <input type="text" id="nickname" placeholder="昵称"
+                            class="w-full py-3 px-4 bg-blush rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-coral/30">
+                    </div>
+                    <div>
+                        <input type="email" id="email" placeholder="邮箱" required
+                            class="w-full py-3 px-4 bg-blush rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-coral/30">
+                    </div>
+                    <div>
+                        <input type="password" id="password" placeholder="密码" required
+                            class="w-full py-3 px-4 bg-blush rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-coral/30">
+                    </div>
+                </div>
+
+                <button type="submit" class="w-full mt-6 py-3 rounded-full gradient-coral text-white font-semibold shadow-soft">
+                    <span id="auth-btn-text">登录</span>
+                </button>
+
+                <p class="text-center text-sm text-gray-500 mt-4">
+                    <span id="auth-switch-text">还没有账号？</span>
+                    <button type="button" onclick="toggleAuthMode()" class="text-coral font-medium" id="auth-switch-btn">立即注册</button>
+                </p>
+            </form>
+        </div>
+    </div>
+
+    <!-- 发布帖子弹窗 -->
+    <div id="post-modal" class="fixed inset-0 bg-black/50 z-[100] hidden items-center justify-center">
+        <div class="bg-white rounded-3xl p-6 mx-4 w-full max-w-md max-h-[80vh] overflow-y-auto">
+            <div class="flex justify-between items-center mb-6">
+                <h3 class="text-xl font-bold text-gray-800">发布动态</h3>
+                <button onclick="closePostModal()" class="text-gray-400 hover:text-gray-600">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                    </svg>
+                </button>
+            </div>
+
+            <form id="post-form" onsubmit="handleCreatePost(event)">
+                <div class="space-y-4">
+                    <div>
+                        <input type="text" id="post-title" placeholder="标题" required
+                            class="w-full py-3 px-4 bg-blush rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-coral/30">
+                    </div>
+                    <div>
+                        <textarea id="post-content" placeholder="分享你的心情..." required rows="5"
+                            class="w-full py-3 px-4 bg-blush rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-coral/30 resize-none"></textarea>
+                    </div>
+                    <div>
+                        <select id="post-category" class="w-full py-3 px-4 bg-blush rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-coral/30">
+                            <option value="share">心情分享</option>
+                            <option value="question">求助提问</option>
+                            <option value="experience">经验分享</option>
+                            <option value="other">其他</option>
+                        </select>
+                    </div>
+                </div>
+
+                <button type="submit" class="w-full mt-6 py-3 rounded-full gradient-coral text-white font-semibold shadow-soft">
+                    发布
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Toast 提示 -->
+    <div id="toast" class="fixed top-20 left-1/2 -translate-x-1/2 bg-gray-800 text-white px-6 py-3 rounded-full text-sm hidden z-[200]"></div>
+
+    <script>
+        // API 配置
+        const API_BASE = 'http://localhost:8000/api/v1';
+
+        // 状态管理
+        let currentUser = null;
+        let authToken = localStorage.getItem('token');
+        let isLoginMode = true;
+
+        // 初始化
+        document.addEventListener('DOMContentLoaded', () => {
+            checkAuth();
+            loadPosts();
+            loadCounselors();
+            setupEventListeners();
+        });
+
+        // 设置事件监听
+        function setupEventListeners() {
+            // 用户头像点击 - 登录/个人中心
+            document.querySelector('nav .w-9').addEventListener('click', () => {
+                if (currentUser) {
+                    showToast(`当前用户: ${currentUser.nickname}`);
+                } else {
+                    openAuthModal();
+                }
+            });
+
+            // 发布按钮
+            document.querySelector('#bottom-nav a:nth-child(3)').addEventListener('click', (e) => {
+                e.preventDefault();
+                if (!currentUser) {
+                    showToast('请先登录');
+                    openAuthModal();
+                    return;
+                }
+                openPostModal();
+            });
+        }
+
+        // ========== 认证相关 ==========
+
+        async function checkAuth() {
+            if (!authToken) return;
+
+            try {
+                const res = await fetch(`${API_BASE}/auth/me`, {
+                    headers: { 'Authorization': `Bearer ${authToken}` }
+                });
+                if (res.ok) {
+                    currentUser = await res.json();
+                    updateUserUI();
+                } else {
+                    localStorage.removeItem('token');
+                    authToken = null;
+                }
+            } catch (e) {
+                console.error('Auth check failed:', e);
+            }
+        }
+
+        function updateUserUI() {
+            const avatar = document.querySelector('nav .w-9');
+            if (currentUser) {
+                avatar.innerHTML = `<span class="text-white font-bold">${currentUser.nickname.charAt(0)}</span>`;
+            }
+        }
+
+        function openAuthModal() {
+            document.getElementById('auth-modal').classList.remove('hidden');
+            document.getElementById('auth-modal').classList.add('flex');
+        }
+
+        function closeAuthModal() {
+            document.getElementById('auth-modal').classList.add('hidden');
+            document.getElementById('auth-modal').classList.remove('flex');
+        }
+
+        function toggleAuthMode() {
+            isLoginMode = !isLoginMode;
+            document.getElementById('auth-title').textContent = isLoginMode ? '登录' : '注册';
+            document.getElementById('auth-btn-text').textContent = isLoginMode ? '登录' : '注册';
+            document.getElementById('auth-switch-text').textContent = isLoginMode ? '还没有账号？' : '已有账号？';
+            document.getElementById('auth-switch-btn').textContent = isLoginMode ? '立即注册' : '立即登录';
+            document.getElementById('nickname-field').classList.toggle('hidden', isLoginMode);
+        }
+
+        async function handleAuth(e) {
+            e.preventDefault();
+
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const nickname = document.getElementById('nickname').value;
+
+            const endpoint = isLoginMode ? '/auth/login/email' : '/auth/register/email';
+            const body = isLoginMode
+                ? { email, password }
+                : { email, password, nickname: nickname || undefined };
+
+            try {
+                const res = await fetch(`${API_BASE}${endpoint}`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(body)
+                });
+
+                const data = await res.json();
+
+                if (res.ok) {
+                    authToken = data.access_token;
+                    localStorage.setItem('token', authToken);
+                    currentUser = data.user;
+                    updateUserUI();
+                    closeAuthModal();
+                    showToast(isLoginMode ? '登录成功' : '注册成功');
+                    loadPosts();
+                } else {
+                    showToast(data.detail || '操作失败');
+                }
+            } catch (e) {
+                showToast('网络错误');
+                console.error(e);
+            }
+        }
+
+        // ========== 帖子相关 ==========
+
+        async function loadPosts() {
+            try {
+                const res = await fetch(`${API_BASE}/posts`, {
+                    headers: authToken ? { 'Authorization': `Bearer ${authToken}` } : {}
+                });
+                const data = await res.json();
+
+                if (data.items && data.items.length > 0) {
+                    renderPosts(data.items);
+                }
+            } catch (e) {
+                console.error('Load posts failed:', e);
+            }
+        }
+
+        function renderPosts(posts) {
+            const container = document.querySelector('.masonry');
+
+            // 保留前2个示例卡片，添加真实数据
+            const existingCards = container.querySelectorAll('.masonry-item');
+
+            posts.forEach((post, index) => {
+                const colors = [
+                    'from-purple-100 to-pink-100',
+                    'from-mint-light to-emerald-100',
+                    'from-amber-50 to-orange-100',
+                    'from-blue-50 to-indigo-100',
+                    'from-rose-50 to-pink-100'
+                ];
+                const emojis = ['🌸', '🧘', '💪', '💕', '🌈', '😴', '🌻', '🦋'];
+                const heights = ['h-32', 'h-36', 'h-40', 'h-44', 'h-48'];
+
+                const card = document.createElement('div');
+                card.className = 'masonry-item';
+                card.innerHTML = `
+                    <div class="bg-white rounded-2xl overflow-hidden shadow-card card-hover cursor-pointer" onclick="handlePostClick(${post.id})">
+                        <div class="${heights[index % heights.length]} bg-gradient-to-br ${colors[index % colors.length]} flex items-center justify-center">
+                            <span class="text-4xl">${emojis[index % emojis.length]}</span>
+                        </div>
+                        <div class="p-3">
+                            <h3 class="font-semibold text-gray-800 text-sm mb-1 line-clamp-2">${post.title}</h3>
+                            <div class="flex items-center justify-between mt-2">
+                                <div class="flex items-center gap-1.5">
+                                    <div class="w-5 h-5 rounded-full bg-coral flex items-center justify-center">
+                                        <span class="text-white text-xs">${post.author.nickname.charAt(0)}</span>
+                                    </div>
+                                    <span class="text-xs text-gray-500">${post.author.nickname}</span>
+                                </div>
+                                <div class="flex items-center gap-1 text-gray-400">
+                                    <svg class="w-3.5 h-3.5 ${post.is_liked ? 'text-coral' : ''}" fill="currentColor" viewBox="0 0 24 24">
+                                        <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                                    </svg>
+                                    <span class="text-xs">${post.like_count}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        async function handlePostClick(postId) {
+            if (!currentUser) {
+                showToast('登录后可查看详情');
+                return;
+            }
+
+            // 点赞功能
+            try {
+                const res = await fetch(`${API_BASE}/posts/${postId}/like`, {
+                    method: 'POST',
+                    headers: { 'Authorization': `Bearer ${authToken}` }
+                });
+
+                if (res.ok) {
+                    showToast('点赞成功');
+                    loadPosts();
+                } else {
+                    const data = await res.json();
+                    showToast(data.detail || '操作失败');
+                }
+            } catch (e) {
+                console.error(e);
+            }
+        }
+
+        function openPostModal() {
+            document.getElementById('post-modal').classList.remove('hidden');
+            document.getElementById('post-modal').classList.add('flex');
+        }
+
+        function closePostModal() {
+            document.getElementById('post-modal').classList.add('hidden');
+            document.getElementById('post-modal').classList.remove('flex');
+        }
+
+        async function handleCreatePost(e) {
+            e.preventDefault();
+
+            const title = document.getElementById('post-title').value;
+            const content = document.getElementById('post-content').value;
+            const category = document.getElementById('post-category').value;
+
+            try {
+                const res = await fetch(`${API_BASE}/posts`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${authToken}`
+                    },
+                    body: JSON.stringify({ title, content, category })
+                });
+
+                if (res.ok) {
+                    closePostModal();
+                    showToast('发布成功');
+                    document.getElementById('post-form').reset();
+                    loadPosts();
+                } else {
+                    const data = await res.json();
+                    showToast(data.detail || '发布失败');
+                }
+            } catch (e) {
+                showToast('网络错误');
+                console.error(e);
+            }
+        }
+
+        // ========== 咨询师相关 ==========
+
+        async function loadCounselors() {
+            try {
+                const res = await fetch(`${API_BASE}/counselors`);
+                const data = await res.json();
+
+                if (data.items && data.items.length > 0) {
+                    renderCounselors(data.items);
+                }
+            } catch (e) {
+                console.error('Load counselors failed:', e);
+            }
+        }
+
+        function renderCounselors(counselors) {
+            const container = document.querySelector('#counselors .flex.gap-3');
+
+            counselors.forEach(counselor => {
+                const colors = [
+                    'from-coral to-coral-light',
+                    'from-purple to-purple-light',
+                    'from-mint to-emerald-400',
+                    'from-amber-400 to-orange-400'
+                ];
+
+                const card = document.createElement('div');
+                card.className = 'flex-shrink-0 w-36 bg-white rounded-2xl p-4 shadow-card card-hover cursor-pointer';
+                card.innerHTML = `
+                    <div class="w-16 h-16 mx-auto rounded-full bg-gradient-to-br ${colors[Math.floor(Math.random() * colors.length)]} flex items-center justify-center mb-3">
+                        <span class="text-white text-xl font-bold">${counselor.user.nickname.charAt(0)}</span>
+                    </div>
+                    <h3 class="text-center font-semibold text-gray-800 text-sm">${counselor.user.nickname}</h3>
+                    <p class="text-center text-xs text-gray-500 mt-1">${counselor.title || '心理咨询师'}</p>
+                    <div class="flex items-center justify-center gap-1 mt-2">
+                        <svg class="w-3.5 h-3.5 text-amber-400" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
+                        </svg>
+                        <span class="text-xs text-gray-600">${counselor.rating.toFixed(1)}</span>
+                        <span class="text-xs text-gray-400">| ${counselor.consult_count}次</span>
+                    </div>
+                    <div class="mt-3 text-center">
+                        <span class="text-coral font-semibold text-sm">¥${counselor.price}</span>
+                        <span class="text-xs text-gray-400">/次</span>
+                    </div>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        // ========== 工具函数 ==========
+
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            toast.textContent = message;
+            toast.classList.remove('hidden');
+            setTimeout(() => {
+                toast.classList.add('hidden');
+            }, 2000);
+        }
+    </script>
+
+</body>
+</html>

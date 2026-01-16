@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>发现 - 心语</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        coral: '#FF6B81',
+                        'coral-light': '#FF8A9B',
+                        blush: '#FFF0F3',
+                        'blush-deep': '#FFE4E9',
+                        purple: '#6C5CE7',
+                        'purple-light': '#A29BFE',
+                        mint: '#00D9A5',
+                    },
+                    fontFamily: { sans: ['Nunito Sans', 'sans-serif'] },
+                }
+            }
+        }
+    </script>
+    <style>
+        body { font-family: 'Nunito Sans', sans-serif; background: #FFF0F3; }
+        .bottom-safe { padding-bottom: calc(70px + env(safe-area-inset-bottom)); }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .card-hover { transition: all 0.2s; cursor: pointer; }
+        .card-hover:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(255,107,129,0.15); }
+    </style>
+</head>
+<body class="bottom-safe">
+    <!-- 顶部搜索栏 -->
+    <div class="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-lg border-b border-blush-deep">
+        <div class="px-4 py-3">
+            <div class="relative">
+                <input type="text" placeholder="搜索心理话题、咨询师、文章..."
+                    class="w-full py-3 px-12 bg-blush rounded-full text-sm focus:outline-none focus:ring-2 focus:ring-coral/30">
+                <svg class="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-coral" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+                </svg>
+                <button class="absolute right-3 top-1/2 -translate-y-1/2 p-1.5 bg-coral rounded-full">
+                    <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+        <!-- 分类标签 -->
+        <div class="flex gap-2 px-4 pb-3 overflow-x-auto hide-scrollbar">
+            <button class="px-4 py-1.5 rounded-full bg-coral text-white text-sm font-medium whitespace-nowrap">全部</button>
+            <button class="px-4 py-1.5 rounded-full bg-white text-gray-600 text-sm whitespace-nowrap card-hover">焦虑缓解</button>
+            <button class="px-4 py-1.5 rounded-full bg-white text-gray-600 text-sm whitespace-nowrap card-hover">情绪管理</button>
+            <button class="px-4 py-1.5 rounded-full bg-white text-gray-600 text-sm whitespace-nowrap card-hover">人际关系</button>
+            <button class="px-4 py-1.5 rounded-full bg-white text-gray-600 text-sm whitespace-nowrap card-hover">自我成长</button>
+            <button class="px-4 py-1.5 rounded-full bg-white text-gray-600 text-sm whitespace-nowrap card-hover">睡眠改善</button>
+        </div>
+    </div>
+
+    <!-- 主内容区 -->
+    <main class="pt-32 px-4">
+        <!-- 热门话题 -->
+        <section class="mb-6">
+            <h2 class="text-lg font-bold text-gray-800 mb-3">热门话题</h2>
+            <div class="grid grid-cols-2 gap-3">
+                <div class="bg-gradient-to-br from-purple to-purple-light rounded-2xl p-4 text-white card-hover">
+                    <div class="text-2xl mb-2">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/>
+                        </svg>
+                    </div>
+                    <h3 class="font-semibold mb-1">#职场焦虑</h3>
+                    <p class="text-xs text-white/80">1.2万讨论</p>
+                </div>
+                <div class="bg-gradient-to-br from-coral to-coral-light rounded-2xl p-4 text-white card-hover">
+                    <div class="text-2xl mb-2">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
+                        </svg>
+                    </div>
+                    <h3 class="font-semibold mb-1">#自我关爱</h3>
+                    <p class="text-xs text-white/80">8.5千讨论</p>
+                </div>
+                <div class="bg-gradient-to-br from-mint to-emerald-400 rounded-2xl p-4 text-white card-hover">
+                    <div class="text-2xl mb-2">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/>
+                        </svg>
+                    </div>
+                    <h3 class="font-semibold mb-1">#睡眠困扰</h3>
+                    <p class="text-xs text-white/80">6.3千讨论</p>
+                </div>
+                <div class="bg-gradient-to-br from-amber-400 to-orange-400 rounded-2xl p-4 text-white card-hover">
+                    <div class="text-2xl mb-2">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/>
+                        </svg>
+                    </div>
+                    <h3 class="font-semibold mb-1">#社交恐惧</h3>
+                    <p class="text-xs text-white/80">5.1千讨论</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 精选文章 -->
+        <section class="mb-6">
+            <div class="flex justify-between items-center mb-3">
+                <h2 class="text-lg font-bold text-gray-800">精选文章</h2>
+                <a href="#" class="text-sm text-coral">更多</a>
+            </div>
+            <div class="space-y-3">
+                <div class="bg-white rounded-2xl p-4 shadow-sm card-hover flex gap-4">
+                    <div class="w-20 h-20 rounded-xl bg-gradient-to-br from-purple-100 to-pink-100 flex items-center justify-center flex-shrink-0">
+                        <svg class="w-10 h-10 text-purple" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
+                        </svg>
+                    </div>
+                    <div class="flex-1">
+                        <h3 class="font-semibold text-gray-800 mb-1 line-clamp-2">如何识别和应对职场PUA</h3>
+                        <p class="text-xs text-gray-500 line-clamp-2">职场PUA是一种隐蔽的心理操控，了解这些信号可以帮助你保护自己...</p>
+                        <div class="flex items-center gap-2 mt-2">
+                            <span class="text-xs text-gray-400">3.2k阅读</span>
+                            <span class="text-xs text-gray-400">156收藏</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-white rounded-2xl p-4 shadow-sm card-hover flex gap-4">
+                    <div class="w-20 h-20 rounded-xl bg-gradient-to-br from-mint/20 to-emerald-100 flex items-center justify-center flex-shrink-0">
+                        <svg class="w-10 h-10 text-mint" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
+                        </svg>
+                    </div>
+                    <div class="flex-1">
+                        <h3 class="font-semibold text-gray-800 mb-1 line-clamp-2">建立健康的边界感：学会说"不"</h3>
+                        <p class="text-xs text-gray-500 line-clamp-2">边界感是心理健康的重要组成部分，但很多人不知道如何建立...</p>
+                        <div class="flex items-center gap-2 mt-2">
+                            <span class="text-xs text-gray-400">2.8k阅读</span>
+                            <span class="text-xs text-gray-400">203收藏</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 推荐咨询师 -->
+        <section class="mb-6">
+            <div class="flex justify-between items-center mb-3">
+                <h2 class="text-lg font-bold text-gray-800">热门咨询师</h2>
+                <a href="#" class="text-sm text-coral">更多</a>
+            </div>
+            <div class="flex gap-3 overflow-x-auto hide-scrollbar pb-2">
+                <div class="flex-shrink-0 w-28 bg-white rounded-2xl p-3 shadow-sm card-hover text-center">
+                    <div class="w-14 h-14 mx-auto rounded-full bg-gradient-to-br from-coral to-coral-light flex items-center justify-center mb-2">
+                        <svg class="w-7 h-7 text-white" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+                        </svg>
+                    </div>
+                    <h3 class="font-semibold text-gray-800 text-sm">李心怡</h3>
+                    <p class="text-xs text-gray-500">情绪管理</p>
+                    <div class="flex items-center justify-center gap-1 mt-1">
+                        <svg class="w-3 h-3 text-amber-400" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
+                        </svg>
+                        <span class="text-xs text-gray-600">4.9</span>
+                    </div>
+                </div>
+                <div class="flex-shrink-0 w-28 bg-white rounded-2xl p-3 shadow-sm card-hover text-center">
+                    <div class="w-14 h-14 mx-auto rounded-full bg-gradient-to-br from-purple to-purple-light flex items-center justify-center mb-2">
+                        <svg class="w-7 h-7 text-white" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+                        </svg>
+                    </div>
+                    <h3 class="font-semibold text-gray-800 text-sm">王思远</h3>
+                    <p class="text-xs text-gray-500">焦虑症</p>
+                    <div class="flex items-center justify-center gap-1 mt-1">
+                        <svg class="w-3 h-3 text-amber-400" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
+                        </svg>
+                        <span class="text-xs text-gray-600">4.8</span>
+                    </div>
+                </div>
+                <div class="flex-shrink-0 w-28 bg-white rounded-2xl p-3 shadow-sm card-hover text-center">
+                    <div class="w-14 h-14 mx-auto rounded-full bg-gradient-to-br from-mint to-emerald-400 flex items-center justify-center mb-2">
+                        <svg class="w-7 h-7 text-white" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+                        </svg>
+                    </div>
+                    <h3 class="font-semibold text-gray-800 text-sm">陈晓雨</h3>
+                    <p class="text-xs text-gray-500">亲密关系</p>
+                    <div class="flex items-center justify-center gap-1 mt-1">
+                        <svg class="w-3 h-3 text-amber-400" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
+                        </svg>
+                        <span class="text-xs text-gray-600">5.0</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- 底部导航 -->
+    <nav class="fixed bottom-0 left-0 right-0 bg-white border-t border-blush-deep z-50">
+        <div class="flex items-center justify-around py-2 pb-[env(safe-area-inset-bottom)]">
+            <a href="index.html" class="flex flex-col items-center py-1 px-3">
+                <svg class="w-6 h-6 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>
+                </svg>
+                <span class="text-xs text-gray-400 mt-1">首页</span>
+            </a>
+            <a href="discover.html" class="flex flex-col items-center py-1 px-3">
+                <svg class="w-6 h-6 text-coral" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+                </svg>
+                <span class="text-xs text-coral font-medium mt-1">发现</span>
+            </a>
+            <a href="#" class="flex flex-col items-center -mt-5">
+                <div class="w-14 h-14 rounded-full bg-gradient-to-r from-coral to-coral-light flex items-center justify-center shadow-lg">
+                    <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 4v16m8-8H4"/>
+                    </svg>
+                </div>
+            </a>
+            <a href="messages.html" class="flex flex-col items-center py-1 px-3">
+                <svg class="w-6 h-6 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/>
+                </svg>
+                <span class="text-xs text-gray-400 mt-1">消息</span>
+            </a>
+            <a href="profile.html" class="flex flex-col items-center py-1 px-3">
+                <svg class="w-6 h-6 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/>
+                </svg>
+                <span class="text-xs text-gray-400 mt-1">我的</span>
+            </a>
+        </div>
+    </nav>
+</body>
+</html>

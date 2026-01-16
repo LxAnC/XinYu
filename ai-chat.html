@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI倾诉 - 心语</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        coral: '#FF6B81',
+                        'coral-light': '#FF8A9B',
+                        blush: '#FFF0F3',
+                        'blush-deep': '#FFE4E9',
+                        purple: '#6C5CE7',
+                        'purple-light': '#A29BFE',
+                        mint: '#00D9A5',
+                    },
+                    fontFamily: { sans: ['Nunito Sans', 'sans-serif'] },
+                }
+            }
+        }
+    </script>
+    <style>
+        body { font-family: 'Nunito Sans', sans-serif; background: linear-gradient(180deg, #F5F0FF 0%, #FFF0F3 100%); min-height: 100vh; }
+        .typing-indicator span { animation: blink 1.4s infinite both; }
+        .typing-indicator span:nth-child(2) { animation-delay: 0.2s; }
+        .typing-indicator span:nth-child(3) { animation-delay: 0.4s; }
+        @keyframes blink { 0%, 60%, 100% { opacity: 0.3; } 30% { opacity: 1; } }
+        .message-appear { animation: slideUp 0.3s ease-out; }
+        @keyframes slideUp { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+    </style>
+</head>
+<body class="flex flex-col h-screen">
+    <!-- 顶部导航 -->
+    <nav class="flex-shrink-0 bg-white/80 backdrop-blur-lg border-b border-blush-deep">
+        <div class="flex items-center justify-between px-4 py-3">
+            <a href="index.html" class="p-2 -ml-2 hover:bg-blush rounded-full">
+                <svg class="w-6 h-6 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+                </svg>
+            </a>
+            <div class="flex items-center gap-2">
+                <div class="w-8 h-8 rounded-full bg-gradient-to-br from-purple to-purple-light flex items-center justify-center">
+                    <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                    </svg>
+                </div>
+                <div>
+                    <h1 class="font-bold text-gray-800 text-sm">心语AI助手</h1>
+                    <p class="text-xs text-mint">在线</p>
+                </div>
+            </div>
+            <button class="p-2 -mr-2 hover:bg-blush rounded-full">
+                <svg class="w-6 h-6 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 5v.01M12 12v.01M12 19v.01M12 6a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z"/>
+                </svg>
+            </button>
+        </div>
+    </nav>
+
+    <!-- 聊天区域 -->
+    <div id="chat-container" class="flex-1 overflow-y-auto px-4 py-4 space-y-4">
+        <!-- 欢迎消息 -->
+        <div class="flex gap-2 message-appear">
+            <div class="w-8 h-8 rounded-full bg-gradient-to-br from-purple to-purple-light flex items-center justify-center flex-shrink-0">
+                <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                </svg>
+            </div>
+            <div class="bg-white rounded-2xl rounded-tl-sm px-4 py-3 max-w-[80%] shadow-sm">
+                <p class="text-sm text-gray-700">你好呀，我是心语AI助手。</p>
+                <p class="text-sm text-gray-700 mt-2">今天有什么想聊的吗？无论是工作压力、情绪困扰，还是只是想找人说说话，我都在这里陪伴你。</p>
+            </div>
+        </div>
+
+        <!-- 快捷话题 -->
+        <div class="flex flex-wrap gap-2 pl-10">
+            <button onclick="sendQuickMessage('最近总是感到焦虑')" class="px-3 py-1.5 bg-white rounded-full text-sm text-purple border border-purple/20 hover:bg-purple/5 transition">最近总是感到焦虑</button>
+            <button onclick="sendQuickMessage('睡眠质量不好')" class="px-3 py-1.5 bg-white rounded-full text-sm text-purple border border-purple/20 hover:bg-purple/5 transition">睡眠质量不好</button>
+            <button onclick="sendQuickMessage('想学习情绪管理')" class="px-3 py-1.5 bg-white rounded-full text-sm text-purple border border-purple/20 hover:bg-purple/5 transition">想学习情绪管理</button>
+        </div>
+    </div>
+
+    <!-- 输入区域 -->
+    <div class="flex-shrink-0 bg-white border-t border-blush-deep px-4 py-3 pb-[env(safe-area-inset-bottom)]">
+        <!-- 工具栏 -->
+        <div class="flex items-center gap-2 mb-3">
+            <button class="p-2 hover:bg-blush rounded-full">
+                <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                </svg>
+            </button>
+            <button class="p-2 hover:bg-blush rounded-full">
+                <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+                </svg>
+            </button>
+            <button class="p-2 hover:bg-blush rounded-full">
+                <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z"/>
+                </svg>
+            </button>
+        </div>
+
+        <!-- 输入框 -->
+        <div class="flex gap-2">
+            <div class="flex-1 relative">
+                <textarea id="message-input" rows="1" placeholder="说说你的心事..."
+                    class="w-full py-3 px-4 bg-blush rounded-2xl text-sm focus:outline-none focus:ring-2 focus:ring-purple/30 resize-none max-h-32"
+                    onkeydown="handleKeyDown(event)"></textarea>
+            </div>
+            <button onclick="sendMessage()" class="w-11 h-11 rounded-full bg-gradient-to-r from-purple to-purple-light flex items-center justify-center shadow-lg hover:shadow-xl transition flex-shrink-0">
+                <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"/>
+                </svg>
+            </button>
+        </div>
+
+        <!-- 提示 -->
+        <p class="text-xs text-gray-400 text-center mt-2">AI回复仅供参考，如需专业帮助请咨询心理咨询师</p>
+    </div>
+
+    <script>
+        const chatContainer = document.getElementById('chat-container');
+        const messageInput = document.getElementById('message-input');
+
+        // AI回复库
+        const aiResponses = {
+            '焦虑': [
+                '我理解你的感受。焦虑是很常见的情绪反应，很多人都会经历。能告诉我更多关于这种焦虑的感受吗？是什么时候开始的？',
+                '听起来你最近承受了不少压力。有时候把焦虑写下来，分析它的来源，可能会有帮助。你觉得是什么让你感到焦虑呢？'
+            ],
+            '睡眠': [
+                '睡眠问题确实会影响我们的情绪和日常生活。你是入睡困难还是容易醒来呢？了解具体情况可以帮助我给你一些建议。',
+                '睡眠质量不好确实很困扰。你有尝试过一些放松的方法吗？比如睡前冥想或者减少屏幕使用时间？'
+            ],
+            '情绪': [
+                '学习情绪管理是照顾自己的重要一步。情绪管理的第一步是觉察和接纳自己的情绪。你现在最常感受到的情绪是什么呢？',
+                '很高兴你想要学习管理情绪。我们可以从认识情绪开始。你有没有注意到，什么情况下你的情绪波动会比较大？'
+            ],
+            'default': [
+                '谢谢你愿意和我分享。能再多告诉我一些吗？我在认真倾听。',
+                '我理解你的感受。在这里，你可以安心地表达自己。你还有什么想说的吗？',
+                '听起来你经历了很多。记住，寻求帮助是勇敢的表现。我在这里陪伴你。'
+            ]
+        };
+
+        function sendQuickMessage(text) {
+            messageInput.value = text;
+            sendMessage();
+        }
+
+        function handleKeyDown(e) {
+            if (e.key === 'Enter' && !e.shiftKey) {
+                e.preventDefault();
+                sendMessage();
+            }
+        }
+
+        function sendMessage() {
+            const text = messageInput.value.trim();
+            if (!text) return;
+
+            // 添加用户消息
+            addMessage(text, 'user');
+            messageInput.value = '';
+
+            // 显示输入指示器
+            showTypingIndicator();
+
+            // 模拟AI回复
+            setTimeout(() => {
+                hideTypingIndicator();
+                const response = getAIResponse(text);
+                addMessage(response, 'ai');
+            }, 1000 + Math.random() * 1000);
+        }
+
+        function addMessage(text, type) {
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `flex gap-2 message-appear ${type === 'user' ? 'justify-end' : ''}`;
+
+            if (type === 'ai') {
+                messageDiv.innerHTML = `
+                    <div class="w-8 h-8 rounded-full bg-gradient-to-br from-purple to-purple-light flex items-center justify-center flex-shrink-0">
+                        <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                        </svg>
+                    </div>
+                    <div class="bg-white rounded-2xl rounded-tl-sm px-4 py-3 max-w-[80%] shadow-sm">
+                        <p class="text-sm text-gray-700">${text}</p>
+                    </div>
+                `;
+            } else {
+                messageDiv.innerHTML = `
+                    <div class="bg-gradient-to-r from-coral to-coral-light text-white rounded-2xl rounded-tr-sm px-4 py-3 max-w-[80%] shadow-sm">
+                        <p class="text-sm">${text}</p>
+                    </div>
+                `;
+            }
+
+            chatContainer.appendChild(messageDiv);
+            chatContainer.scrollTop = chatContainer.scrollHeight;
+        }
+
+        function showTypingIndicator() {
+            const indicator = document.createElement('div');
+            indicator.id = 'typing-indicator';
+            indicator.className = 'flex gap-2 message-appear';
+            indicator.innerHTML = `
+                <div class="w-8 h-8 rounded-full bg-gradient-to-br from-purple to-purple-light flex items-center justify-center flex-shrink-0">
+                    <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                    </svg>
+                </div>
+                <div class="bg-white rounded-2xl rounded-tl-sm px-4 py-3 shadow-sm">
+                    <div class="typing-indicator flex gap-1">
+                        <span class="w-2 h-2 bg-gray-400 rounded-full"></span>
+                        <span class="w-2 h-2 bg-gray-400 rounded-full"></span>
+                        <span class="w-2 h-2 bg-gray-400 rounded-full"></span>
+                    </div>
+                </div>
+            `;
+            chatContainer.appendChild(indicator);
+            chatContainer.scrollTop = chatContainer.scrollHeight;
+        }
+
+        function hideTypingIndicator() {
+            const indicator = document.getElementById('typing-indicator');
+            if (indicator) indicator.remove();
+        }
+
+        function getAIResponse(text) {
+            if (text.includes('焦虑') || text.includes('紧张') || text.includes('压力')) {
+                const responses = aiResponses['焦虑'];
+                return responses[Math.floor(Math.random() * responses.length)];
+            } else if (text.includes('睡') || text.includes('失眠')) {
+                const responses = aiResponses['睡眠'];
+                return responses[Math.floor(Math.random() * responses.length)];
+            } else if (text.includes('情绪') || text.includes('心情')) {
+                const responses = aiResponses['情绪'];
+                return responses[Math.floor(Math.random() * responses.length)];
+            } else {
+                const responses = aiResponses['default'];
+                return responses[Math.floor(Math.random() * responses.length)];
+            }
+        }
+
+        // 自动调整输入框高度
+        messageInput.addEventListener('input', function() {
+            this.style.height = 'auto';
+            this.style.height = Math.min(this.scrollHeight, 128) + 'px';
+        });
+    </script>
+</body>
+</html>

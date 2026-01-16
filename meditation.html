@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>冥想放松 - 心语</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        coral: '#FF6B81',
+                        'coral-light': '#FF8A9B',
+                        blush: '#FFF0F3',
+                        'blush-deep': '#FFE4E9',
+                        purple: '#6C5CE7',
+                        'purple-light': '#A29BFE',
+                        mint: '#00D9A5',
+                    },
+                    fontFamily: { sans: ['Nunito Sans', 'sans-serif'] },
+                }
+            }
+        }
+    </script>
+    <style>
+        body { font-family: 'Nunito Sans', sans-serif; background: linear-gradient(180deg, #E8E4F5 0%, #FFF0F3 100%); min-height: 100vh; }
+        .card-hover { transition: all 0.2s; cursor: pointer; }
+        .card-hover:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(108,92,231,0.15); }
+        .breathing-circle { animation: breathe 8s ease-in-out infinite; }
+        @keyframes breathe {
+            0%, 100% { transform: scale(1); opacity: 0.6; }
+            50% { transform: scale(1.15); opacity: 0.9; }
+        }
+        .pulse-slow { animation: pulse 3s ease-in-out infinite; }
+        @keyframes pulse {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 1; }
+        }
+    </style>
+</head>
+<body class="pb-6">
+    <!-- 顶部导航 -->
+    <nav class="sticky top-0 z-50 bg-white/80 backdrop-blur-lg border-b border-purple/10">
+        <div class="flex items-center justify-between px-4 py-3">
+            <a href="profile.html" class="p-2 -ml-2 hover:bg-purple/10 rounded-full">
+                <svg class="w-6 h-6 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+                </svg>
+            </a>
+            <h1 class="font-bold text-gray-800">冥想放松</h1>
+            <button class="p-2 -mr-2 hover:bg-purple/10 rounded-full">
+                <svg class="w-6 h-6 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                </svg>
+            </button>
+        </div>
+    </nav>
+
+    <!-- 呼吸练习入口 -->
+    <div class="mx-4 mt-4 rounded-3xl bg-gradient-to-br from-purple to-purple-light p-6 text-white relative overflow-hidden">
+        <!-- 动画圆圈 -->
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-32 h-32 rounded-full bg-white/20 breathing-circle"></div>
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-24 h-24 rounded-full bg-white/30 breathing-circle" style="animation-delay: -1s;"></div>
+
+        <div class="relative z-10 text-center py-8">
+            <h2 class="text-xl font-bold mb-2">呼吸练习</h2>
+            <p class="text-white/80 text-sm mb-6">跟随节奏，放松身心</p>
+            <button onclick="startBreathing()" class="px-8 py-3 bg-white text-purple font-semibold rounded-full shadow-lg hover:shadow-xl transition">
+                开始练习
+            </button>
+        </div>
+    </div>
+
+    <!-- 今日推荐 -->
+    <section class="px-4 mt-6">
+        <h2 class="text-lg font-bold text-gray-800 mb-3">今日推荐</h2>
+        <div class="bg-white rounded-2xl shadow-sm overflow-hidden card-hover" onclick="playMeditation('sleep')">
+            <div class="relative h-36 bg-gradient-to-br from-indigo-400 to-purple flex items-center justify-center">
+                <div class="absolute inset-0 bg-black/10"></div>
+                <div class="relative z-10 text-center text-white">
+                    <div class="w-16 h-16 mx-auto rounded-full bg-white/20 flex items-center justify-center mb-2 pulse-slow">
+                        <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M8 5v14l11-7z"/>
+                        </svg>
+                    </div>
+                    <p class="text-sm font-medium">助眠冥想</p>
+                </div>
+            </div>
+            <div class="p-4">
+                <h3 class="font-bold text-gray-800 mb-1">深度放松 - 帮助入睡</h3>
+                <p class="text-sm text-gray-500 mb-2">引导你进入放松状态，缓解一天的疲惫</p>
+                <div class="flex items-center gap-3 text-xs text-gray-400">
+                    <span class="flex items-center gap-1">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                        </svg>
+                        15分钟
+                    </span>
+                    <span>23.5万次播放</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 冥想分类 -->
+    <section class="px-4 mt-6">
+        <h2 class="text-lg font-bold text-gray-800 mb-3">冥想分类</h2>
+        <div class="grid grid-cols-2 gap-3">
+            <!-- 减压放松 -->
+            <div class="bg-white rounded-2xl p-4 shadow-sm card-hover" onclick="showCategory('relax')">
+                <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-mint/20 to-emerald-100 flex items-center justify-center mb-3">
+                    <svg class="w-6 h-6 text-mint" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"/>
+                    </svg>
+                </div>
+                <h3 class="font-semibold text-gray-800 mb-1">减压放松</h3>
+                <p class="text-xs text-gray-500">12个音频</p>
+            </div>
+
+            <!-- 专注力 -->
+            <div class="bg-white rounded-2xl p-4 shadow-sm card-hover" onclick="showCategory('focus')">
+                <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-amber-100 to-orange-100 flex items-center justify-center mb-3">
+                    <svg class="w-6 h-6 text-amber-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/>
+                    </svg>
+                </div>
+                <h3 class="font-semibold text-gray-800 mb-1">提升专注</h3>
+                <p class="text-xs text-gray-500">8个音频</p>
+            </div>
+
+            <!-- 情绪疗愈 -->
+            <div class="bg-white rounded-2xl p-4 shadow-sm card-hover" onclick="showCategory('emotion')">
+                <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-rose-100 to-pink-100 flex items-center justify-center mb-3">
+                    <svg class="w-6 h-6 text-rose-500" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                    </svg>
+                </div>
+                <h3 class="font-semibold text-gray-800 mb-1">情绪疗愈</h3>
+                <p class="text-xs text-gray-500">15个音频</p>
+            </div>
+
+            <!-- 睡眠 -->
+            <div class="bg-white rounded-2xl p-4 shadow-sm card-hover" onclick="showCategory('sleep')">
+                <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-indigo-100 to-purple-100 flex items-center justify-center mb-3">
+                    <svg class="w-6 h-6 text-indigo-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/>
+                    </svg>
+                </div>
+                <h3 class="font-semibold text-gray-800 mb-1">助眠音乐</h3>
+                <p class="text-xs text-gray-500">20个音频</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 白噪音 -->
+    <section class="px-4 mt-6">
+        <h2 class="text-lg font-bold text-gray-800 mb-3">白噪音</h2>
+        <div class="flex gap-3 overflow-x-auto pb-2 -mx-4 px-4">
+            <div class="flex-shrink-0 w-24 bg-white rounded-2xl p-3 shadow-sm card-hover text-center" onclick="playNoise('rain')">
+                <div class="w-12 h-12 mx-auto rounded-full bg-gradient-to-br from-blue-400 to-cyan-400 flex items-center justify-center mb-2">
+                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z"/>
+                    </svg>
+                </div>
+                <span class="text-sm text-gray-700">雨声</span>
+            </div>
+            <div class="flex-shrink-0 w-24 bg-white rounded-2xl p-3 shadow-sm card-hover text-center" onclick="playNoise('ocean')">
+                <div class="w-12 h-12 mx-auto rounded-full bg-gradient-to-br from-cyan-400 to-blue-500 flex items-center justify-center mb-2">
+                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/>
+                    </svg>
+                </div>
+                <span class="text-sm text-gray-700">海浪</span>
+            </div>
+            <div class="flex-shrink-0 w-24 bg-white rounded-2xl p-3 shadow-sm card-hover text-center" onclick="playNoise('forest')">
+                <div class="w-12 h-12 mx-auto rounded-full bg-gradient-to-br from-emerald-400 to-green-500 flex items-center justify-center mb-2">
+                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"/>
+                    </svg>
+                </div>
+                <span class="text-sm text-gray-700">森林</span>
+            </div>
+            <div class="flex-shrink-0 w-24 bg-white rounded-2xl p-3 shadow-sm card-hover text-center" onclick="playNoise('fire')">
+                <div class="w-12 h-12 mx-auto rounded-full bg-gradient-to-br from-orange-400 to-red-500 flex items-center justify-center mb-2">
+                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 18.657A8 8 0 016.343 7.343S7 9 9 10c0-2 .5-5 2.986-7C14 5 16.09 5.777 17.656 7.343A7.975 7.975 0 0120 13a7.975 7.975 0 01-2.343 5.657z"/>
+                    </svg>
+                </div>
+                <span class="text-sm text-gray-700">篝火</span>
+            </div>
+            <div class="flex-shrink-0 w-24 bg-white rounded-2xl p-3 shadow-sm card-hover text-center" onclick="playNoise('cafe')">
+                <div class="w-12 h-12 mx-auto rounded-full bg-gradient-to-br from-amber-400 to-yellow-500 flex items-center justify-center mb-2">
+                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                    </svg>
+                </div>
+                <span class="text-sm text-gray-700">咖啡厅</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- 冥想统计 -->
+    <section class="px-4 mt-6">
+        <div class="bg-white rounded-2xl p-4 shadow-sm">
+            <h3 class="font-semibold text-gray-800 mb-3">我的冥想</h3>
+            <div class="grid grid-cols-3 gap-4 text-center">
+                <div>
+                    <div class="text-2xl font-bold text-purple">5</div>
+                    <div class="text-xs text-gray-500">累计次数</div>
+                </div>
+                <div>
+                    <div class="text-2xl font-bold text-purple">48</div>
+                    <div class="text-xs text-gray-500">累计分钟</div>
+                </div>
+                <div>
+                    <div class="text-2xl font-bold text-purple">3</div>
+                    <div class="text-xs text-gray-500">连续天数</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        function startBreathing() {
+            alert('呼吸练习即将开始...\n(功能开发中)');
+        }
+
+        function playMeditation(type) {
+            alert('正在加载冥想音频...\n(功能开发中)');
+        }
+
+        function showCategory(category) {
+            alert('查看分类: ' + category + '\n(功能开发中)');
+        }
+
+        function playNoise(type) {
+            alert('正在播放: ' + type + '\n(功能开发中)');
+        }
+    </script>
+</body>
+</html>
