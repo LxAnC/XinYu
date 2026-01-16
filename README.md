@@ -3,6 +3,11 @@
 [![FastAPI](https://img.shields.io/badge/Backend-FastAPI-009688?style=flat-square&logo=fastapi&logoColor=white)](https://fastapi.tiangolo.com/)
 [![Tailwind CSS](https://img.shields.io/badge/Frontend-Tailwind_CSS-38B2AC?style=flat-square&logo=tailwind-css&logoColor=white)](https://tailwindcss.com/)
 [![License](https://img.shields.io/badge/License-MIT-yellow?style=flat-square)](LICENSE)
+
+
+
+**心语 (Xinyu)** 是一款专为心理健康设计的社区应用，旨在提供一个温暖、私密且专业的倾诉空间。通过 AI 陪伴、专业咨询和社区互助，帮助用户缓解焦虑、管理情绪并实现自我成长。
+## 效果展示
 <img width="436" height="837" alt="example_1" src="https://github.com/user-attachments/assets/401a3f6b-4602-4be9-8ac1-9e0d1e1e72a6" />
 <img width="434" height="839" alt="example_7" src="https://github.com/user-attachments/assets/9c3fc391-287b-4343-b297-ba09fc45cacd" />
 <img width="435" height="837" alt="example_6" src="https://github.com/user-attachments/assets/a074a69d-f056-4bbb-9bc5-9f4bfd4f09d6" />
@@ -10,8 +15,6 @@
 <img width="435" height="838" alt="example_4" src="https://github.com/user-attachments/assets/bf5a8977-0e50-4c24-a89c-203d154e1cf9" />
 <img width="436" height="835" alt="example_3" src="https://github.com/user-attachments/assets/baa25e7f-0ad7-4ea2-986d-2ce26137c215" />
 <img width="434" height="839" alt="example_2" src="https://github.com/user-attachments/assets/41c6e32c-c8ae-4bf6-b479-06dcc35a7f30" />
-
-**心语 (Xinyu)** 是一款专为心理健康设计的社区应用，旨在提供一个温暖、私密且专业的倾诉空间。通过 AI 陪伴、专业咨询和社区互助，帮助用户缓解焦虑、管理情绪并实现自我成长。
 
 ## 🌟 核心功能
 
