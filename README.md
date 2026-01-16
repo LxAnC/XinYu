@@ -6,6 +6,20 @@
 
 **心语 (Xinyu)** 是一款专为心理健康设计的社区应用，旨在提供一个温暖、私密且专业的倾诉空间。通过 AI 陪伴、专业咨询和社区互助，帮助用户缓解焦虑、管理情绪并实现自我成长。
 
+
+
+
+
+![image-20260116160212200](C:\Users\小陆\AppData\Roaming\Typora\typora-user-images\image-20260116160212200.png)![image-20260116160232991](C:\Users\小陆\AppData\Roaming\Typora\typora-user-images\image-20260116160250643.png)
+
+![image-20260116160324418](C:\Users\小陆\AppData\Roaming\Typora\typora-user-images\image-20260116160324418.png)![image-20260116160339604](C:\Users\小陆\AppData\Roaming\Typora\typora-user-images\image-20260116160339604.png)
+
+
+
+![image-20260116160417160](C:\Users\小陆\AppData\Roaming\Typora\typora-user-images\image-20260116160417160.png)![image-20260116160434210](C:\Users\小陆\AppData\Roaming\Typora\typora-user-images\image-20260116160434210.png)
+
+
+
 ## 🌟 核心功能
 
 -   **AI 倾诉助手**：24/7 在线陪伴，提供即时的情感支持与引导。
